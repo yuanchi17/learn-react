@@ -8,6 +8,8 @@ module.exports = {
   },
   extends: [
     'standard',
+    'eslint:recommended',
+    'plugin:react/recommended',
   ],
   globals: {
     Atomics: 'readonly',
@@ -19,6 +21,8 @@ module.exports = {
   },
   rules: {
     'no-return-await': 0, // 0 = off, 1 = warn, 2 = error
+    'react/jsx-uses-react': 2,
+    'react/jsx-uses-vars': 2,
     'comma-dangle': ['error', {
       arrays: 'always-multiline',
       objects: 'always-multiline',
