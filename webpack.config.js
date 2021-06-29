@@ -48,4 +48,7 @@ module.exports = {
       filename: 'index.css',
     }),
   ],
+  devServer: {
+    contentBase: './dist', // 產品程式碼的路徑
+  },
 }

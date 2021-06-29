@@ -6,7 +6,8 @@
   "author": "李元琦 <joyceleeya@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "build": "webpack -p"
+    "build": "webpack -p",
+    "start": "webpack-dev-server"
   },
   "dependencies": {
     "eslint": "^7.29.0",
@@ -29,6 +30,7 @@
     "node-sass": "^6.0.1",
     "sass-loader": "^10.1.0",
     "webpack": "4.44.1",
-    "webpack-cli": "3.3.10"
+    "webpack-cli": "3.3.10",
+    "webpack-dev-server": "^3.11.2"
   }
 }
