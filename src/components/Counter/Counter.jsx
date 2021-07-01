@@ -1,25 +1,37 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useMemo } from 'react'
+import useCounter from '../../hooks/useCounter'
+
+const Title = React.memo(() => {
+  console.log('渲染 Title 元件')
+  return (
+    <div>
+      <h2>挖喜 Title</h2>
+    </div>
+  )
+}, (oldProps, newProps) => {
+  return true // 回傳 false 還是會重新渲染
+})
 
 const Counter = () => {
-  const [count, setCount] = useState(0)
-  const btnClick = () => {
-    setCount((newCount, newProps) => newCount + 1)
-    setCount((newCount, newProps) => newCount + 1)
-  }
+  const [text, setText] = useState('')
+  const { count, onAdd } = useCounter(0, () => { console.log('useCounter +10') })
 
-  useEffect(() => {
-    console.log('「元件渲染完成」')
-    console.log(`因第一次渲染畫面及 count 更新時觸發。count = ${count}`)
-    return () => {
-      console.log('「元件被移除前觸發 return」')
-      console.log(`舊值為: ${count}`)
-    }
-  }, [count])
+  useEffect(() => { console.log('執行 Counter') }, [count])
+
+  const updateText = useMemo(() => {
+    console.log('updateText')
+    return `您已輸入：${text}`
+  }, [text])
 
   return (
     <div>
-      <p>點擊次數：{count}</p>
-      <button onClick={btnClick}>點擊+2</button>
+      <Title />
+      <div>
+        <p>{updateText}</p>
+        <input type="text" value={text} onChange={(e) => { setText(e.target.value) }} />
+      </div>
+      <p>count：{count}</p>
+      <button onClick={() => onAdd(10)}>點擊+10</button>
     </div>
   )
 }

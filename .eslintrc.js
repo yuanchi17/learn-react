@@ -21,6 +21,7 @@ module.exports = {
   },
   rules: {
     'no-return-await': 0, // 0 = off, 1 = warn, 2 = error
+    'react/display-name': 0,
     'react/jsx-uses-react': 2,
     'react/jsx-uses-vars': 2,
     'react/prop-types': 0,
