@@ -1,5 +1,10 @@
-import React from 'react'
+import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
+import React from 'react'
+
+const mapStateToProps = state => ({
+  news: state.news,
+})
 
 const List = props => (
   <ul>
@@ -11,4 +16,4 @@ const List = props => (
   </ul>
 )
 
-export default List
+export default connect(mapStateToProps)(List)

@@ -1,23 +1,28 @@
+import { connect } from 'react-redux'
 import { useParams, useHistory } from 'react-router-dom'
 import React from 'react'
 
-const Content = ({ match, newsItems }) => {
+const mapStateToProps = state => ({
+  news: state.news,
+})
+
+const Content = ({ match, news }) => {
   console.log(match)
   const history = useHistory()
   const btnNext = id => { history.push(`/news/content/${id}`) }
 
   let { id: newsId } = useParams()
   newsId = parseInt(newsId)
-  const news = newsItems.find(news => parseInt(news.id) === newsId)
+  const nowNews = news.find(n => parseInt(n.id) === newsId)
 
   return (
   <div>
     <h3>你正在閱讀訊息</h3>
-    <p>{news.text}</p>
+    <p>{nowNews.text}</p>
     { newsId === 1 ? null : <button onClick={() => btnNext(newsId - 1)}>上一篇</button> }
-    { newsId === newsItems.length ? null : <button onClick={() => btnNext(newsId + 1)}>下一篇</button> }
+    { newsId === news.length ? null : <button onClick={() => btnNext(newsId + 1)}>下一篇</button> }
   </div>
   )
 }
 
-export default Content
+export default connect(mapStateToProps)(Content)
