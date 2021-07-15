@@ -9,15 +9,13 @@ const Content = ({ match, newsItems }) => {
   let { id: newsId } = useParams()
   newsId = parseInt(newsId)
   const news = newsItems.find(news => parseInt(news.id) === newsId)
-  const back = newsId === 1 ? '' : newsId - 1
-  const next = newsId === newsItems.length ? '' : newsId + 1
 
   return (
   <div>
     <h3>你正在閱讀訊息</h3>
     <p>{news.text}</p>
-    {!back ? null : <button onClick={() => btnNext(back)}>上一篇</button>}
-    {!next ? null : <button onClick={() => btnNext(next)}>下一篇</button>}
+    { newsId === 1 ? null : <button onClick={() => btnNext(newsId - 1)}>上一篇</button> }
+    { newsId === newsItems.length ? null : <button onClick={() => btnNext(newsId + 1)}>下一篇</button> }
   </div>
   )
 }
