@@ -20,7 +20,7 @@ const News = () => {
       )}/>
       <Route
         path="/news/content/:id"
-        component={props => <NewsContent news={NewsItems} match={props.match}/>}
+        component={props => <NewsContent newsItems={NewsItems} match={props.match}/>}
       />
     </Switch>
   )
