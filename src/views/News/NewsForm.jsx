@@ -5,20 +5,22 @@ const mapStateToProps = state => ({
   news: state.news,
 })
 
-const Form = ({ news, dispatch }) => {
+const mapDispatchToProps = dispatch => ({
+  addNews: news => {
+    dispatch({
+      type: 'ADD_NEWS',
+      payload: { news },
+    })
+  },
+})
+
+const Form = ({ news, addNews }) => {
   const [tmpNews, setTmpNews] = useState({
     title: '',
     text: '',
   })
 
-  const btnAdd = () => {
-    dispatch({
-      type: 'ADD_NEWS',
-      payload: {
-        news: { id: news.length + 1, ...tmpNews },
-      },
-    })
-  }
+  const btnAdd = () => { addNews({ id: news.length + 1, ...tmpNews }) }
 
   return (
   <div>
@@ -31,4 +33,4 @@ const Form = ({ news, dispatch }) => {
   )
 }
 
-export default connect(mapStateToProps)(Form)
+export default connect(mapStateToProps, mapDispatchToProps)(Form)
