@@ -1,5 +1,6 @@
 import { connect } from 'react-redux'
 import React, { useState } from 'react'
+import { addNewsObj } from '../../actions/news'
 
 const mapStateToProps = state => ({
   news: state.news,
@@ -7,10 +8,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   addNews: news => {
-    dispatch({
-      type: 'ADD_NEWS',
-      payload: { news },
-    })
+    dispatch(addNewsObj(news))
   },
 })
 
