@@ -18,6 +18,12 @@ const news = (state = initState, action) => {
         ],
       }
     }
+    case 'DEL_NEWS': {
+      return {
+        ...state,
+        news: state.news.filter(n => n.id !== action.payload.nid),
+      }
+    }
     default:
       return state
   }
