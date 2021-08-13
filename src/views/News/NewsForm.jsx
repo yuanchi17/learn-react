@@ -1,29 +1,21 @@
 import _ from 'lodash'
 import { addNewsObj } from '../../actions/news'
-import { connect } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import React, { useState } from 'react'
 
-const mapStateToProps = state => ({
-  news: state.news,
-})
-
-const mapDispatchToProps = dispatch => ({
-  addNews: news => {
-    dispatch(addNewsObj(news))
-  },
-})
-
-const Form = ({ news, addNews }) => {
+const Form = () => {
+  const dispatch = useDispatch()
+  const news = useSelector(state => state.news)
   const [tmpNews, setTmpNews] = useState({
     title: '',
     text: '',
   })
 
   const btnAdd = () => {
-    addNews({
+    dispatch(addNewsObj({
       id: _.get(_.maxBy(news, 'id'), 'id', 0) + 1,
       ...tmpNews,
-    })
+    }))
   }
 
   return (
@@ -37,4 +29,4 @@ const Form = ({ news, addNews }) => {
   )
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Form)
+export default Form
