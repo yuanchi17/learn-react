@@ -21,7 +21,7 @@ ReactDom.render(
         <Route exact path='/home' component={Home} />
         <Route path='/news' component={News} />
         <Route path='/demo' component={Demo} />
-        <Route path='/todoList' component={TodoList} />
+        <Route path='/todoList' component={ props => <TodoList match={props.match} />} />
         <Route path='/' component={NotFound} />
       </Switch>
     </HashRouter>

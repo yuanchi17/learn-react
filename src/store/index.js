@@ -1,6 +1,7 @@
 import _ from 'lodash'
-import { createStore, applyMiddleware } from 'redux'
+import { createStore, applyMiddleware, combineReducers } from 'redux'
 import news from './news'
+import todoList from './todoList'
 
 const logger = store => next => action => {
   console.log(`執行: ${_.get(action, 'type', '未知')}`, action)
@@ -13,7 +14,10 @@ const logger = store => next => action => {
 }
 
 const store = createStore(
-  news,
+  combineReducers({
+    news,
+    todoList,
+  }),
   applyMiddleware(logger),
 )
 

@@ -1,3 +1,3 @@
-import TodoList from './TodoList.jsx'
+import View from './View.jsx'
 
-export default TodoList
+export default View

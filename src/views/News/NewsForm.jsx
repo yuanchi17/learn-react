@@ -5,7 +5,7 @@ import React, { useState } from 'react'
 
 const Form = () => {
   const dispatch = useDispatch()
-  const news = useSelector(state => state.news)
+  const news = useSelector(state => state.news.news)
   const [tmpNews, setTmpNews] = useState({
     title: '',
     text: '',

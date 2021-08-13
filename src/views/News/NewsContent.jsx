@@ -6,7 +6,7 @@ import React from 'react'
 const Content = ({ match }) => {
   console.log(match)
   const history = useHistory()
-  const news = useSelector(state => state.news)
+  const news = useSelector(state => state.news.news)
   const btnNext = id => { history.push(`/news/content/${id}`) }
 
   let { id: index } = useParams()

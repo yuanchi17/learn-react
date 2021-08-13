@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import React from 'react'
 
 const List = () => {
-  const news = useSelector(state => state.news)
+  const news = useSelector(state => state.news.news)
   const dispatch = useDispatch()
   return (
     <ul>
