@@ -8,6 +8,7 @@ import Home from './views/Home'
 import Menu from './components/Menu'
 import News from './views/News'
 import NotFound from './views/NotFound'
+import TodoList from './views/TodoList'
 import store from './store'
 
 ReactDom.render(
@@ -20,6 +21,7 @@ ReactDom.render(
         <Route exact path='/home' component={Home} />
         <Route path='/news' component={News} />
         <Route path='/demo' component={Demo} />
+        <Route path='/todoList' component={TodoList} />
         <Route path='/' component={NotFound} />
       </Switch>
     </HashRouter>
