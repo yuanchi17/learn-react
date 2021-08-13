@@ -1,14 +1,15 @@
-import { connect } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { useParams, useHistory } from 'react-router-dom'
 import React from 'react'
 
-const mapStateToProps = state => ({
-  news: state.news,
-})
+// const mapStateToProps = state => ({
+//   news: state.news,
+// })
 
-const Content = ({ match, news }) => {
+const Content = ({ match }) => {
   console.log(match)
   const history = useHistory()
+  const news = useSelector(state => state.news)
   const btnNext = id => { history.push(`/news/content/${id}`) }
 
   let { id: newsId } = useParams()
@@ -25,4 +26,4 @@ const Content = ({ match, news }) => {
   )
 }
 
-export default connect(mapStateToProps)(Content)
+export default Content

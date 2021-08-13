@@ -1,6 +1,7 @@
+import _ from 'lodash'
+import { addNewsObj } from '../../actions/news'
 import { connect } from 'react-redux'
 import React, { useState } from 'react'
-import { addNewsObj } from '../../actions/news'
 
 const mapStateToProps = state => ({
   news: state.news,
@@ -18,7 +19,12 @@ const Form = ({ news, addNews }) => {
     text: '',
   })
 
-  const btnAdd = () => { addNews({ id: news.length + 1, ...tmpNews }) }
+  const btnAdd = () => {
+    addNews({
+      id: _.get(_.maxBy(news, 'id'), 'id', 0) + 1,
+      ...tmpNews,
+    })
+  }
 
   return (
   <div>
