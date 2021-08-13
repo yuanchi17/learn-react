@@ -15,6 +15,7 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           options: {
+            compact: false,
             presets: [ // 編譯
               '@babel/preset-react',
               '@babel/preset-env',
