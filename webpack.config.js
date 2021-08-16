@@ -44,6 +44,9 @@ module.exports = {
       },
     ],
   },
+  performance: {
+    hints: false,
+  },
   plugins: [ // 另外用外掛程式做處裡的放這
     new MiniCssExtractPlugin({
       filename: 'index.css',
